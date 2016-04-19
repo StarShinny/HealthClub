@@ -1,0 +1,56 @@
+body {
+	background-color: #ffffff;
+}
+
+.editor_frame {
+	margin: 40px;
+
+
+}
+
+.editor {
+	padding: 15px;
+	color: #999;
+
+	height: auto;
+	margin-bottom: 5px;
+	font: "Arial";
+	white-space: normal;
+	word-break: break-all;
+	
+	
+}
+
+.register_form {
+    display: none;
+
+}
+
+.wallpaper {
+    height: 300px;
+    width: 1600px;
+}
+
+.editor_btnbar {
+	display: none;
+}
+
+#fileupload {
+	border:1px solid #000;
+}
+.clear{clear:both;}
+.ehdel_upload_show input{float:left; margin-top:10px;}
+.ehdel_upload{float:left;margin-top:-20px; *margin-top:-40px; filter:alpha(opacity=0);-moz-opacity:0;opacity:0;}
+
+#pbar {
+	padding: 0px;
+	background: white;
+	width: 0%; 
+	height: 18px;
+	display: none; 
+}
+
+.answer_pad {
+    border-left: 3px solid #149bdf;
+    border-top: 3px solid #0088cc;
+}

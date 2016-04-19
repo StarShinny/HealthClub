@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="struts2" extends="struts-default" namespace="/view">
+
+
+		<action name="login" class="LoginAction">
+			<result name="inexist"></result>
+			<result name="input"></result>
+			<result name="member">/view/member/usr_homepage.jsp</result>
+			<result name="waiter">/view/waiter/wait_homepage.jsp</result>
+			<result name="manager">/view/manager/mag_homepage.jsp</result>
+		</action>
+		
+		<action name="register" class="RegisterAction">
+			<result name="input"></result>
+			<result name="success">/view/member/usr_homepage.jsp</result>
+		</action>
+		
+		<action name="logout" class="LogoutAction">
+			<result name="logout">/view/login/reg_log.jsp</result>
+		</action>
+		
+		<action name="addFamily" class="AddFamilyAction">
+		</action>
+		
+		<action name="updateUser" class="UpdateUserAction">
+		</action>
+		
+		<action name="addActivity" class="AddActivityAction">
+			
+		</action>
+		<action name="addParticipation" class="AddParticipationAction">
+		</action>
+		<action name="addSession" class="AddSessionAction">
+		</action>
+		<action name="allActivities" class="AllActivitiesAction">
+			<result name="member">/view/member/usr_homepage.jsp</result>
+			<result name="waiter">/view/waiter/wait_homepage.jsp</result>
+		</action>
+		<action name="allUsers" class="AllUsersAction">
+			<result name="success">/view/waiter/usr_manage.jsp</result>
+		</action>
+		<action name="allParticipations" class="AllParticipationsAction">
+			<result name="success">/view/waiter/add_part.jsp</result>
+		</action>
+		<action name="cardActive" class="CardActiveAction">
+			<result name="success">/view/member/pay_frame.jsp</result>
+		</action>
+		<action name="cardCancel" class="CardCancelAction">
+			<result name="success">/view/member/pay_frame.jsp</result>
+		</action>
+		<action name="cardRenew" class="CardRenewAction">
+		</action>
+		<action name="deleteActivity" class="DeleteActivityAction">
+		</action>
+		<action name="deleteParticipation" class="DeleteParticipationAction">
+		</action>
+		<action name="deleteActSession" class="DeleteActSessionAction">
+		</action>
+		<action name="modifyActivity" class="ModifyActivityAction">
+		</action>
+		<action name="modifyActSession" class="ModifyActSessionAction">
+		</action>
+		<action name="modifyUserInfo" class="ModifyUserInfoAction">
+		</action>
+		<action name="modifyUserPart" class="ModifyUserPartAction">
+		</action>
+		<action name="pay" class="PayAction">
+			<result name="success">/view/member/pay_frame.jsp</result>
+		</action>
+		<action name="queryActivity" class="QueryActivityAction">
+		</action>
+		<action name="queryActivityStatics" class="QueryActivityStaticsAction">
+		</action>
+		<action name="queryPartRecord" class="QueryPartRecordAction">
+			<result name="success">/view/member/act_history.jsp</result>
+		</action>
+		<action name="queryPayRecord" class="QueryPayRecordAction">
+			<result name="success">/view/member/charge_history.jsp</result>
+		</action>
+		<action name="queryUserInfo" class="QueryUserInfoAction">
+		</action>
+		<action name="queryUserStatics" class="QueryUserStaticsAction">
+		</action>
+		<action name="reserveActivity" class="ReserveActivityAction">
+		</action>
+		<action name="reserveActRecord" class="ReserveActRecordAction">
+			<result name="success">/view/member/reserve_manage.jsp</result>
+		</action>
+		<action name="showActDetail" class="ShowActDetailAction">
+			<result name="success">/view/member/act_detail.jsp</result>
+		</action>
+	</package>
+		
+</struts>

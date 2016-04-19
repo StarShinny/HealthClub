@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+
+
+
+<!--  配置sessionFactory  --> 
+
+	<!-- dao -->
+	<bean id="UserDao" class="dao.impl.UserDaoImpl">		
+	</bean>	
+	<bean id="CardDao" class="dao.impl.CardDaoImpl">	
+	</bean>
+	<bean id="ActivityDao" class="dao.impl.ActivityDaoImpl">	
+	</bean>
+	<bean id="ActSessionDao" class="dao.impl.ActSessionDaoImpl">	
+	</bean>
+	<bean id="ChargeHistoryDao" class="dao.impl.ChargeHistoryDaoImpl">	
+	</bean>
+	<bean id="ParticipationDao" class="dao.impl.ParticipationDaoImpl">	
+	</bean>
+	<bean id="ReservationDao" class="dao.impl.ReservationDaoImpl">	
+	</bean>
+	
+	
+	<!-- service -->
+	<bean id="UserService" class="service.impl.UserServiceImpl">
+		<property name="UserDao">
+			<ref bean="UserDao"/>
+		</property>
+	</bean>			
+	<bean id="CardService" class="service.impl.CardServiceImpl">
+		<property name="CardDao">
+			<ref bean="CardDao"/>
+		</property>
+	</bean>
+	<bean id="ActivityService" class="service.impl.ActivityServiceImpl">
+		<property name="ActivityDao">
+			<ref bean="ActivityDao"/>
+		</property>
+		<property name="ActSessionDao">
+			<ref bean="ActSessionDao"/>
+		</property>
+	</bean>
+	<bean id="ActSessionService" class="service.impl.ActSessionServiceImpl">
+		<property name="ActivityDao">
+			<ref bean="ActivityDao"/>
+		</property>
+		<property name="ActSessionDao">
+			<ref bean="ActSessionDao"/>
+		</property>
+	</bean>
+	<bean id="ChargeHistoryService" class="service.impl.ChargeHistoryServiceImpl">
+		<property name="ChargeHistoryDao">
+			<ref bean="ChargeHistoryDao"/>
+		</property>
+	</bean>
+	<bean id="ParticipationService" class="service.impl.ParticipationServiceImpl">
+		<property name="ParticipationDao">
+			<ref bean="ParticipationDao"/>
+		</property>
+	</bean>
+	<bean id="ReservationService" class="service.impl.ReservationServiceImpl">
+		<property name="ReservationDao">
+			<ref bean="ReservationDao"/>
+		</property>
+	</bean>
+	
+	
+	<!-- action -->
+	<bean id="LogoutAction" class="action.LogoutAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>	
+	<bean id="LoginAction" class="action.LoginAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+				<property name="CardService">
+			<ref bean="CardService"/>
+		</property>
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>	
+	<bean id="RegisterAction" class="action.RegisterAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+		<property name="CardService">
+			<ref bean="CardService"/>
+		</property>
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>		
+	<bean id="AddFamilyAction" class="action.AddFamilyAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>	
+	<bean id="UpdateUserAction" class="action.UpdateUserAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AddActivityAction" class="action.AddActivityAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+		<property name="ActSessionService">
+			<ref bean="ActSessionService"/>
+		</property>
+	</bean>
+	<bean id="AddParticipationAction" class="action.AddParticipationAction">
+		<property name="ParticipationService">
+			<ref bean="ParticipationService"/>
+		</property>
+	</bean>
+	<bean id="AddSessionAction" class="action.AddSessionAction">
+		<property name="ActSessionService">
+			<ref bean="ActSessionService"/>
+		</property>
+	</bean>
+	<bean id="AllActivitiesAction" class="action.AllActivitiesAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>
+	<bean id="AllParticipationsAction" class="action.AllParticipationsAction">
+		<property name="ParticipationService">
+			<ref bean="ParticipationService"/>
+		</property>
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>
+	<bean id="AllUsersAction" class="action.AllUsersAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="CardActiveAction" class="action.CardActiveAction">
+		<property name="CardService">
+			<ref bean="CardService"/>
+		</property>
+		<property name="ChargeHistoryService">
+			<ref bean="ChargeHistoryService"/>
+		</property>
+	</bean>
+	<bean id="CardCancelAction" class="action.CardCancelAction">
+		<property name="CardService">
+			<ref bean="CardService"/>
+		</property>
+	</bean>
+	<bean id="CardRenewAction" class="action.CardRenewAction">
+		<property name="CardService">
+			<ref bean="CardService"/>
+		</property>
+		<property name="ChargeHistoryService">
+			<ref bean="ChargeHistoryService"/>
+		</property>
+	</bean>
+	<bean id="DeleteActivityAction" class="action.DeleteActivityAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>
+	<bean id="DeleteParticipationAction" class="action.DeleteParticipationAction">
+		<property name="ParticipationService">
+			<ref bean="ParticipationService"/>
+		</property>
+	</bean>
+	<bean id="DeleteActSessionAction" class="action.DeleteActSessionAction">
+		<property name="ActSessionService">
+			<ref bean="ActSessionService"/>
+		</property>
+	</bean>
+	<bean id="ModifyActivityAction" class="action.ModifyActivityAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>
+	<bean id="ModifyActSessionAction" class="action.ModifyActSessionAction">
+		<property name="ActSessionService">
+			<ref bean="ActSessionService"/>
+		</property>
+	</bean>
+	<bean id="ModifyUserInfoAction" class="action.ModifyUserInfoAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="ModifyUserPartAction" class="action.ModifyUserPartAction">
+		<property name="ParticipationService">
+			<ref bean="ParticipationService"/>
+		</property>
+	</bean>
+	<bean id="PayAction" class="action.PayAction">
+		<property name="ChargeHistoryService">
+			<ref bean="ChargeHistoryService"/>
+		</property>
+	</bean>
+	<bean id="QueryActivityAction" class="action.QueryActivityAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>
+	<bean id="QueryActivityStaticsAction" class="action.QueryActivityStaticsAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+	</bean>
+	<bean id="QueryPartRecordAction" class="action.QueryPartRecordAction">
+		<property name="ParticipationService">
+			<ref bean="ParticipationService"/>
+		</property>
+	</bean>
+	<bean id="QueryPayRecordAction" class="action.QueryPayRecordAction">
+		<property name="ChargeHistoryService">
+			<ref bean="ChargeHistoryService"/>
+		</property>
+	</bean>
+	<bean id="QueryUserInfoAction" class="action.QueryUserInfoAction">
+		<property name="ChargeHistoryService">
+			<ref bean="ChargeHistoryService"/>
+		</property>
+		<property name="ParticipationService">
+			<ref bean="ParticipationService"/>
+		</property>
+	</bean>
+	<bean id="QueryUserStaticsAction" class="action.QueryUserStaticsAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="ReserveActivityAction" class="action.ReserveActivityAction">
+		<property name="ReservationService">
+			<ref bean="ReservationService"/>
+		</property>
+	</bean>
+	<bean id="ReserveActRecordAction" class="action.ReserveActRecordAction">
+		<property name="ReservationService">
+			<ref bean="ReservationService"/>
+		</property>
+	</bean>
+	<bean id="ShowActDetailAction" class="action.ShowActDetailAction">
+		<property name="ActivityService">
+			<ref bean="ActivityService"/>
+		</property>
+		<property name="ActSessionService">
+			<ref bean="ActSessionService"/>
+		</property>
+	</bean>
+	
+	    <!-- 要调用的工作类 -->
+        <bean id="quartzJob" class="quartz.QuartzJob"></bean>
+        <!-- 定义调用对象和调用对象的方法 -->
+        <bean id="jobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+            <!-- 调用的类 -->
+            <property name="targetObject">
+                <ref bean="quartzJob"/>
+            </property>
+            <!-- 调用类中的方法 -->
+            <property name="targetMethod">
+                <value>work</value>
+            </property>
+        </bean>
+        <!-- 定义触发时间 -->
+        <bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+            <property name="jobDetail">
+                <ref bean="jobtask"/>
+            </property>
+            <!-- cron表达式 -->
+            <property name="cronExpression">
+                <value>0 0 1 1 * ?</value>
+            </property>
+        </bean>
+        <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+        <bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+            <property name="triggers">
+                <list>
+                    <ref bean="doTime"/>
+                </list>
+            </property>
+        </bean>
+</beans>
